@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="?android:attr/listPreferredItemHeight"
+    android:background="?android:attr/activatedBackgroundIndicator" 
+    android:focusable="false"
+    android:focusableInTouchMode="false"   
+    android:padding="1dip">
+    <ProgressBar
+        android:id="@+id/progressBar1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="1dp"
+        android:gravity="left"
+        android:layout_weight="1" />
+    <ImageView
+        android:id="@+id/thumb"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:layout_marginRight="1dp"   
+        android:gravity="left"    
+        android:src="@drawable/loading_icon" />
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="2"
+        android:gravity="left"
+        android:textSize="15sp"                 
+        android:ellipsize="marquee" />    
+</LinearLayout>

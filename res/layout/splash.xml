@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+ <GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
+     android:layout_width="fill_parent"
+     android:layout_height="fill_parent"
+     android:layout_marginLeft="50dip"
+     android:layout_marginRight="50dip"
+     android:columnCount="8" >
+
+     <TextView
+         android:id="@+id/descfirst"
+         android:layout_width="222dp"
+         android:layout_column="0"
+         android:layout_columnSpan="2"
+         android:layout_gravity="right"
+         android:layout_row="1"
+         android:ems="10"
+         android:singleLine="true"
+         android:text="@string/splash_app_name_first"
+         android:textColor="#0EBDE2"
+         android:textSize="28sp"
+         android:textStyle="bold|italic" />
+
+     <TextView
+         android:id="@+id/descsecond"
+         android:layout_width="match_parent"
+         android:layout_column="1"
+         android:layout_columnSpan="7"
+         android:layout_row="1"
+         android:ems="10"
+         android:singleLine="true"
+         android:text="@string/splash_app_name_second"
+         android:textColor="#E95903"
+         android:textSize="28sp"
+         android:textStyle="bold|italic" />
+
+     <Space
+         android:layout_width="136dp"
+         android:layout_height="1dp"
+         android:layout_column="0"
+         android:layout_row="0" />
+
+     <Space
+         android:layout_width="1dp"
+         android:layout_height="164dp"
+         android:layout_column="0"
+         android:layout_row="0" />
+
+     <Space
+         android:layout_width="1dp"
+         android:layout_height="36dp"
+         android:layout_column="0"
+         android:layout_gravity="fill_horizontal"
+         android:layout_row="1" />
+
+     <ProgressBar
+         android:id="@+id/progressBar1"
+         android:layout_column="0"
+         android:layout_gravity="right"
+         android:layout_row="2" />
+
+     <Space
+         android:layout_width="1dp"
+         android:layout_height="261dp"
+         android:layout_column="0"
+         android:layout_gravity="fill_horizontal"
+         android:layout_row="2" />
+
+ </GridLayout>
