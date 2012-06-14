@@ -58,7 +58,7 @@ public class NewsListFragment extends ListFragment {
         String title = this.adapter.getItemTitle(position);
         String url = this.adapter.getItemUrl(position);
         MainActivity parent = (MainActivity)this.getActivity();
-        parent.newArticleSelected(content, title, url);
+        parent.newsArticleSelected(content, title, url);
     }
 
     @Override

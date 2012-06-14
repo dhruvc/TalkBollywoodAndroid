@@ -19,11 +19,7 @@ import android.view.animation.AlphaAnimation;
 
 
 public class SplashActivity extends Activity
-{
-    private final int SPLASH_DISPLAY_TIME = 5000;
-    
-    private final int ANIMATION_TIME = 3000;
-    
+{    
     private SoundPool soundPool;
     private int soundID;
     
@@ -47,7 +43,7 @@ public class SplashActivity extends Activity
         super.onStart();         
         
         AlphaAnimation animation = new AlphaAnimation(0, 1);
-        animation.setDuration(ANIMATION_TIME);
+        animation.setDuration(Constants.SPLASH_ANIMATION_TIME);
         
         //View appIcon = findViewById(R.id.big_app_icon);
         View descfirst = findViewById(R.id.descfirst);
@@ -80,7 +76,7 @@ public class SplashActivity extends Activity
                 Intent mainIntent = new Intent(SplashActivity.this, MainActivity.class);
                 SplashActivity.this.startActivity(mainIntent);
             }
-        }, SPLASH_DISPLAY_TIME);           
+        }, Constants.SPLASH_DISPLAY_TIME);           
         
     }
     

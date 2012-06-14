@@ -21,8 +21,7 @@ public class RSSHandler extends DefaultHandler {
     private String thumbUrl = "";
     private String contentData = "";
     
-    private String ParsedTitle = "";
-    private boolean videoItemsDesired = false;
+    private String ParsedTitle = "";   
     private boolean isCurrentItemInCategoryVideo = false;
     
     
@@ -33,9 +32,9 @@ public class RSSHandler extends DefaultHandler {
         return this.parsedItems;
     }
     
-    public RSSHandler(boolean videoOnly)
+    public RSSHandler()
     {
-        this.videoItemsDesired = videoOnly;
+        
     }
     
     public void startElement(String uri, String localName, String qName, Attributes attrs) throws SAXException {

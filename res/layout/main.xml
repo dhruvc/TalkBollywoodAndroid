@@ -6,7 +6,12 @@
             class="com.talkbollywood.feed.NewsListFragment"
             android:id="@+id/news_list_frag"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"/>    
+            android:layout_height="match_parent"/>
+    <fragment 
+	        class="com.talkbollywood.feed.PhotosListFragment"
+	        android:id="@+id/photos_list_frag"
+	        android:layout_width="match_parent"
+	        android:layout_height="match_parent"/>    
     <fragment 
 	        class="com.talkbollywood.feed.VideosListFragment"
 	        android:id="@+id/videos_list_frag"
@@ -15,6 +20,11 @@
     <fragment 
 	        class="com.talkbollywood.feed.NewsArticleFragment"
 	        android:id="@+id/news_article_frag"
+	        android:layout_width="match_parent"
+	        android:layout_height="match_parent"/>
+    <fragment 
+	        class="com.talkbollywood.feed.PhotosArticleFragment"
+	        android:id="@+id/photos_article_frag"
 	        android:layout_width="match_parent"
 	        android:layout_height="match_parent"/>
 </LinearLayout>

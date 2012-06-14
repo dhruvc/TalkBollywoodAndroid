@@ -22,7 +22,7 @@ public class VideosListFragmentAdapter extends BaseAdapter implements ListAdapte
 
     private Context context;
     private Handler mHandler;
-    private final long RELOAD_THRESHHOLD = 20*60*1000; // 20 minutes
+    
     Date lastLoadDate = null;
     private List<NewsItem> items = new ArrayList<NewsItem>();
     
@@ -43,17 +43,17 @@ public class VideosListFragmentAdapter extends BaseAdapter implements ListAdapte
         {
             lastLoadDate = new Date();
             AsyncRSSWrapper wrapper = new AsyncRSSWrapper();
-            wrapper.startAsync(this, true);
+            wrapper.startAsync(this, Constants.VIDEOS_FEED_URL);
             return;
         }
         
         Date currentDate = new Date();
         long msSinceLastLoad = currentDate.getTime() - lastLoadDate.getTime(); 
-        if(msSinceLastLoad > RELOAD_THRESHHOLD)
+        if(msSinceLastLoad > Constants.RELOAD_THRESHHOLD)
         {
             lastLoadDate = currentDate;
             AsyncRSSWrapper wrapper = new AsyncRSSWrapper();
-            wrapper.startAsync(this, true); 
+            wrapper.startAsync(this, Constants.VIDEOS_FEED_URL); 
             return;            
         }           
     }

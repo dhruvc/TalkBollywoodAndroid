@@ -17,17 +17,13 @@ import org.xml.sax.SAXException;
 import org.xml.sax.XMLReader;
 
 public class AsyncRSSWrapper
-{ 
-    
-    private final String VIDEOS_FEED_URL = "http://www.talkbollywood.com/category/videos/feed/";
-    private final String NEWS_FEED_URL = "http://www.talkbollywood.com/feed/";
-    
+{        
     public AsyncRSSWrapper()
     {
         
     }
     
-    public void startAsync(final RssRequestListener listener, final boolean videoOnly)
+    public void startAsync(final RssRequestListener listener, final String feedUrl)
     {
         new Thread(){
             @Override public void run() {
@@ -35,20 +31,13 @@ public class AsyncRSSWrapper
                     SAXParserFactory factory = SAXParserFactory.newInstance();
                     SAXParser saxParser = factory.newSAXParser();
                     XMLReader xmlReader = saxParser.getXMLReader();
-                    RSSHandler rssHandler = new RSSHandler(videoOnly);
+                    RSSHandler rssHandler = new RSSHandler();
                     xmlReader.setContentHandler(rssHandler);                    
                     
                     
                     {             
-                        URL rssUrl = null;
-                        if(videoOnly)
-                        {                            
-                            rssUrl = new URL(VIDEOS_FEED_URL);
-                        }
-                        else
-                        {
-                            rssUrl = new URL(NEWS_FEED_URL);
-                        }
+                        URL rssUrl = new URL(feedUrl);
+
                         HttpURLConnection connection = (HttpURLConnection)rssUrl.openConnection();
                         
                         InputStream ipS = connection.getInputStream();

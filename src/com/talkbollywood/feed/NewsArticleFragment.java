@@ -87,18 +87,21 @@ public class NewsArticleFragment extends Fragment implements ImageRequestListene
         {            
             rootView.removeView(asyncImages.get(i));
         }
+        asyncImages.clear();
 
         // Clean up previous text views.        
         for(int i=0; i<textBlocks.size(); i++)
         {            
             rootView.removeView(textBlocks.get(i));
         }
+        textBlocks.clear();
 
         // Clean up previous progress bars.        
         for(int i=0; i<progBars.size(); i++)
         {            
             rootView.removeView(progBars.get(i));
         }
+        progBars.clear();
                 
         processContent(content);                       
     }   

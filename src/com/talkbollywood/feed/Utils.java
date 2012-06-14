@@ -1,9 +1,6 @@
 
 package com.talkbollywood.feed;
 
-import android.content.Intent;
-import android.net.Uri;
-
 public class Utils{
     
     public static String extractYoutubeLink(String rawContent)

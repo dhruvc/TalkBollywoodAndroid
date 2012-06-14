@@ -10,6 +10,7 @@ public class InstanceManager
 {
     private static NewsListFragmentAdapter newsListAdapter = null;
     private static VideosListFragmentAdapter videosListAdapter = null;
+    private static PhotosListFragmentAdapter photosListAdapter;
  
     public static NewsListFragmentAdapter NewsListFragmentAdapter()
     {
@@ -58,5 +59,29 @@ public class InstanceManager
         }
         
         return videosListAdapter;
+    }
+    
+    public static PhotosListFragmentAdapter PhotosListFragmentAdapter()
+    {
+        if(photosListAdapter == null)
+        {
+            photosListAdapter = new  PhotosListFragmentAdapter(null);  
+        }
+        
+        return photosListAdapter;
+    }
+    
+    public static PhotosListFragmentAdapter PhotosListFragmentAdapter(Context context)
+    {
+        if(photosListAdapter == null)
+        {
+            photosListAdapter = new  PhotosListFragmentAdapter(context);  
+        }
+        else
+        {
+            photosListAdapter.setContext(context);
+        }
+        
+        return photosListAdapter;
     }
 }

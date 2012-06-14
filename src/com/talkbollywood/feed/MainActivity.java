@@ -25,12 +25,12 @@ import android.util.Log;
 public class MainActivity extends Activity implements ActionBar.TabListener, NewsListListener {
 
     private static int NEWS_TAB_POS = 0;
-    private static int VIDEOS_TAB_POS = 1;
-    private final String FB_APP_ID = "240398539388249";
+    private static int PHOTOS_TAB_POS = 1;
+    private static int VIDEOS_TAB_POS = 2;        
     
     private ProgressDialog progressDialog;
 
-    Facebook facebook = new Facebook(FB_APP_ID);
+    Facebook facebook = new Facebook(Constants.FB_APP_ID);
     
     private SharedPreferences mPrefs;
     
@@ -49,8 +49,8 @@ public class MainActivity extends Activity implements ActionBar.TabListener, New
         bar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
 
         bar.addTab(bar.newTab().setText(getText(R.string.tab_news)).setTabListener(this), NEWS_TAB_POS);
-
-        bar.addTab(bar.newTab().setText(getText(R.string.tab_videos)).setTabListener(this), VIDEOS_TAB_POS);
+        bar.addTab(bar.newTab().setText(getText(R.string.tab_photos)).setTabListener(this), PHOTOS_TAB_POS);
+        bar.addTab(bar.newTab().setText(getText(R.string.tab_videos)).setTabListener(this), VIDEOS_TAB_POS);        
         
         mAsyncRunner = new AsyncFacebookRunner(facebook);
         new Handler();
@@ -80,6 +80,10 @@ public class MainActivity extends Activity implements ActionBar.TabListener, New
         else if(bar.getSelectedNavigationIndex() == VIDEOS_TAB_POS)
         {
             this.updateVisibility(R.id.videos_list_frag);
+        }
+        else if(bar.getSelectedNavigationIndex() == PHOTOS_TAB_POS)
+        {
+            this.updateVisibility(R.id.photos_list_frag);
         }
     }
 
@@ -117,6 +121,10 @@ public class MainActivity extends Activity implements ActionBar.TabListener, New
         {
             updateVisibility(R.id.videos_list_frag);
         }
+        else if(selectedTabPos == PHOTOS_TAB_POS)
+        {
+            updateVisibility(R.id.photos_list_frag);
+        }
     }
     
     @Override
@@ -128,17 +136,19 @@ public class MainActivity extends Activity implements ActionBar.TabListener, New
     private void updateVisibility(int shownFragmentId)
     {
         Fragment newsFrag = getFragmentManager().findFragmentById(R.id.news_list_frag);     
-
         Fragment videosFrag = getFragmentManager().findFragmentById(R.id.videos_list_frag);
-        
-        Fragment articleFrag = getFragmentManager().findFragmentById(R.id.news_article_frag);
+        Fragment photosFrag = getFragmentManager().findFragmentById(R.id.photos_list_frag);        
+        Fragment newsArticleFrag = getFragmentManager().findFragmentById(R.id.news_article_frag);
+        Fragment photosArticleFrag = getFragmentManager().findFragmentById(R.id.photos_article_frag);
 
         Fragment shownFrag = getFragmentManager().findFragmentById(shownFragmentId);
         
         FragmentTransaction fTrans = getFragmentManager().beginTransaction();        
         fTrans.hide(newsFrag);
         fTrans.hide(videosFrag);
-        fTrans.hide(articleFrag);        
+        fTrans.hide(photosFrag);
+        fTrans.hide(newsArticleFrag);
+        fTrans.hide(photosArticleFrag);
         fTrans.show(shownFrag);        
         fTrans.commit();        
     }
@@ -152,10 +162,15 @@ public class MainActivity extends Activity implements ActionBar.TabListener, New
     {
         // If news article fragment is visible
         // take back to news list
-        Fragment articleFrag = getFragmentManager().findFragmentById(R.id.news_article_frag);
-        if(articleFrag.isVisible())
+        Fragment newsArticleFrag = getFragmentManager().findFragmentById(R.id.news_article_frag);
+        Fragment photosArticleFrag = getFragmentManager().findFragmentById(R.id.photos_article_frag);
+        if(newsArticleFrag.isVisible())
         {
             this.updateVisibility(R.id.news_list_frag);
+        }
+        else if(photosArticleFrag.isVisible())
+        {
+            this.updateVisibility(R.id.photos_list_frag);
         }
         else
         {
@@ -167,11 +182,18 @@ public class MainActivity extends Activity implements ActionBar.TabListener, New
         onTabSelected(tab, ft);
     }
     
-    public void newArticleSelected(String content, String title, String url)
+    public void newsArticleSelected(String content, String title, String url)
     {
         NewsArticleFragment articleFrag = (NewsArticleFragment)getFragmentManager().findFragmentById(R.id.news_article_frag);
         articleFrag.setArticleContent(content, title, url);
         this.updateVisibility(R.id.news_article_frag);
+    }
+    
+    public void photosArticleSelected(String content, String title, String url)
+    {
+        PhotosArticleFragment articleFrag = (PhotosArticleFragment)getFragmentManager().findFragmentById(R.id.photos_article_frag);
+        articleFrag.setArticleContent(content, title, url);
+        this.updateVisibility(R.id.photos_article_frag);
     }
     
     @Override

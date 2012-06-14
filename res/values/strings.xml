@@ -3,6 +3,7 @@
     <string name="app_name">TalkBollywood</string>    
     <string name="load_news_progress">Loading news..</string>
     <string name="tab_news">News</string>
+    <string name="tab_photos">Photos</string>
     <string name="tab_videos">Videos</string>
     <string name="fb_post_desc">From my android phone</string>
     <string name="no_internet_warning">Oops your internet connection is lost. Please connect and try again.</string>

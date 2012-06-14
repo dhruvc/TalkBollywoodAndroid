@@ -23,8 +23,7 @@ public class NewsListFragmentAdapter extends BaseAdapter implements ListAdapter,
     private Handler mHandler;
     private NewsListListener listener = null;
     
-    Date lastLoadDate = null;
-    private final long RELOAD_THRESHHOLD = 20*60*1000; // 20 minutes  
+    Date lastLoadDate = null;    
     
     private List<NewsItem> items = new ArrayList<NewsItem>();
     
@@ -50,17 +49,17 @@ public class NewsListFragmentAdapter extends BaseAdapter implements ListAdapter,
         {
             lastLoadDate = new Date();
             AsyncRSSWrapper wrapper = new AsyncRSSWrapper();
-            wrapper.startAsync(this, false);
+            wrapper.startAsync(this, Constants.NEWS_FEED_URL);
             return;
         }
         
         Date currentDate = new Date();
         long msSinceLastLoad = currentDate.getTime() - lastLoadDate.getTime(); 
-        if(msSinceLastLoad > RELOAD_THRESHHOLD)
+        if(msSinceLastLoad > Constants.RELOAD_THRESHHOLD)
         {
             lastLoadDate = currentDate;
             AsyncRSSWrapper wrapper = new AsyncRSSWrapper();
-            wrapper.startAsync(this, false);
+            wrapper.startAsync(this, Constants.NEWS_FEED_URL);
             return;            
         }
         
